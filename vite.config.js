@@ -7,17 +7,17 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-    server: {
-        host: "::",
-        port: 8080,
-        allowedHosts: true,
+  base: "/Bt-traders/",
+  server: {
+    host: "::",
+    port: 8080,
+    allowedHosts: true,
+  },
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
-    plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-    resolve: {
-        alias: {
-            "@": path.resolve(__dirname, "./src"),
-        },
-    },
+  },
 }));
