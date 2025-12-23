@@ -15,8 +15,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 
 // Ensure this matches your backend port (usually 8080)
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
-
+const API_BASE = "bt-community-production.up.railway.app";
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
