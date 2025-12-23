@@ -39,7 +39,7 @@ const App = () => {
         {/* WhatsApp Button visible on all pages */}
         <WhatsAppBtn />
 
-        <BrowserRouter basename={basename}>
+        <BrowserRouter basename="/Bt-traders">
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
