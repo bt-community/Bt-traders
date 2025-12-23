@@ -28,7 +28,6 @@ const ScrollToTop = () => {
 const App = () => {
   // FIX: Dynamically set basename based on environment
   // If in production (GitHub), use "/bt-frontend". If local, use "/"
-  const basename = import.meta.env.MODE === "production" ? "/bt-frontend" : "/";
 
   return (
     <QueryClientProvider client={queryClient}>
