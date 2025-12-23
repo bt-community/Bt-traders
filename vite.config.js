@@ -7,8 +7,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+    base: "/Bt-traders/",   // ← THIS IS THE FIX (case-sensitive)
     server: {
         host: "::",
         port: 8080,
