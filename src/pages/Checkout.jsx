@@ -31,7 +31,6 @@ const Checkout = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate payment processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     setIsLoading(false);

@@ -36,7 +36,7 @@ const PaymentSuccess = () => {
               Click the button below to join our exclusive Telegram channel.
             </p>
             <a
-              href="https://t.me/+your_channel_invite_link" // REPLACE with your actual link
+              href="https://tg://join?invite=P4lIOoikako2Yjdl" // REPLACE with your actual link
               target="_blank"
               rel="noopener noreferrer"
             >
