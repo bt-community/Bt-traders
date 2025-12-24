@@ -4,9 +4,11 @@ import { Check, Crown, Zap, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const API_BASE = "https://bt-community-production.up.railway.app";
-const getAuthHeader = () => ({
-  Authorization: `Bearer ${localStorage.getItem("token")}`,
-});
+const getAuthHeader = () => {
+  const token = localStorage.getItem("token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
 
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -109,7 +111,9 @@ const Plans = () => {
         body: JSON.stringify({ amount: planPrice }),
       });
 
-      const order = await res.json();
+      const orderText = await res.text();
+      const order = JSON.parse(orderText);
+
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
@@ -122,7 +126,12 @@ const Plans = () => {
           const vRes = await fetch(`${API_BASE}/payment/verify`, {
             method: "POST",
             headers: { "Content-Type": "application/json", ...getAuthHeader() },
-            body: JSON.stringify(response),
+            body: JSON.stringify({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+        }),
+
           });
 
           if (vRes.ok) {
@@ -230,7 +239,8 @@ const Plans = () => {
               <Button
                 variant={plan.popular || plan.best ? "accent" : "outline"}
                 className="w-full h-10 md:h-11 font-bold"
-                onClick={() => handlePayment(plan.name, plan.price)}
+                onClick={() => handlePayment(plan.name, Number(plan.price))}
+
               >
                 Get Started
               </Button>
