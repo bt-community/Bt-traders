@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Crown, Zap, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_BASE = "https://bt-1-cmjj.onrender.com/api/v1";
+const API_BASE = "bt-community-production.up.railway.app";
 const getAuthHeader = () => ({
   Authorization: `Bearer ${localStorage.getItem("token")}`,
 });

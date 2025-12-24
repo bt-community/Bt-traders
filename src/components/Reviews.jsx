@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_BASE = "https://bt-1-cmjj.onrender.com/api/v1";
+const API_BASE = "bt-community-production.up.railway.app";
 
 const getAuthHeader = () => {
   if (typeof window === "undefined") return {};
