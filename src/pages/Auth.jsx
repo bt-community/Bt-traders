@@ -45,8 +45,9 @@ const Auth = () => {
     setIsLoading(true);
 
   const endpoint = isSignup
-    ? "/api/v1/auth/register"
-    : "/api/v1/auth/login";
+     ? "/auth/register"
+     : "/auth/login";
+
 
     // Map frontend fields to backend Entity fields
     const payload = isSignup
