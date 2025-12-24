@@ -10,7 +10,8 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_BASE = "bt-community-production.up.railway.app";
+const API_BASE = "https://bt-community-production.up.railway.app";
+
 
 const getAuthHeader = () => {
   if (typeof window === "undefined") return {};

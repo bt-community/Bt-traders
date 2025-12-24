@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Mail, Lock, ArrowLeft, Eye, EyeOff, TrendingUp } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_BASE = "bt-community-production.up.railway.app";
+const API_BASE = "https://bt-community-production.up.railway.app";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
