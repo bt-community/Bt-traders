@@ -63,7 +63,7 @@ const Reviews = () => {
   const fetchReviews = async () => {
     try {
       setIsLoading(true);
-      const res = await fetch(`${API_BASE}/api/v1/reviews`);
+      const res = await fetch(`${API_BASE}/reviews`);
       if (res.ok) {
         const data = await res.json();
         setLiveReviews(data.reverse());
@@ -91,7 +91,7 @@ const Reviews = () => {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/api/v1/reviews`, {
+      const res = await fetch(`${API_BASE}/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
