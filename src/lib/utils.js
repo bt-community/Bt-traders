@@ -2,7 +2,8 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 // 1. Export this constant so other files can use it
-export const API_BASE = "https://bt-community-production.up.railway.app";
+export const API_BASE = "https://bt-community-production.up.railway.app/api/v1";
+
 
 export const getAuthHeader = () => {
   const token = localStorage.getItem("token");

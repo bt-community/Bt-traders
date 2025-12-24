@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Crown, Zap, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_BASE = "https://bt-community-production.up.railway.app";
+const API_BASE = "https://bt-community-production.up.railway.app/api/v1";
 const getAuthHeader = () => {
   const token = localStorage.getItem("token");
   return token ? { Authorization: `Bearer ${token}` } : {};
