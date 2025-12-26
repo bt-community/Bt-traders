@@ -104,6 +104,8 @@ const Plans = () => {
       return;
     }
 
+    
+
     try {
       const res = await fetch(`${API_BASE}/payment/create-order`, {
         method: "POST",
