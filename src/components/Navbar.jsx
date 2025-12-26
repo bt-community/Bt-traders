@@ -82,7 +82,7 @@ const Navbar = () => {
           >
             <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-primary/20 transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-primary/10">
               <img
-                src="/Btlogo.jpg"
+                src="Btlogo.jpg"
                 alt="B.Tech Traders Logo"
                 className="w-full h-full object-cover"
               />
