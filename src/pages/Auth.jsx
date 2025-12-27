@@ -198,7 +198,7 @@ const Auth = () => {
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input
                 type={showPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder="Create Password"
                 value={formData.password}
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })

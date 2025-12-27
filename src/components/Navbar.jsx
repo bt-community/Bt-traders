@@ -148,31 +148,43 @@ const [showSubInfo, setShowSubInfo] = useState(false);
         Active
       </button>
 
-      {showSubInfo && (
-        <div className="absolute right-0 top-14 w-64 rounded-xl bg-card border border-border p-4 shadow-2xl z-50 animate-fade-in">
-          <div className="space-y-2">
-            <p className="text-sm font-semibold text-primary">
-              {subscription.plan}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium">Started:</span>{" "}
-              {new Date(subscription.startDate).toLocaleDateString("en-IN", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-medium">Expires:</span>{" "}
-              {new Date(subscription.endDate).toLocaleDateString("en-IN", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
-            </p>
-          </div>
-        </div>
-      )}
+   {showSubInfo && (
+  <div className="absolute right-0 top-14 w-64 rounded-xl bg-card border border-border p-4 shadow-2xl z-50 animate-fade-in">
+    <div className="space-y-3">
+      <div className="space-y-2">
+        <p className="text-sm font-semibold text-primary">
+          {subscription.plan}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          <span className="font-medium">Started:</span>{" "}
+          {new Date(subscription.startDate).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          <span className="font-medium">Expires:</span>{" "}
+          {new Date(subscription.endDate).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })}
+        </p>
+      </div>
+      
+      <button
+        onClick={() => window.open("https://t.me/+P4lIOoikako2Yjdl", "_blank")}
+        className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-sm font-semibold transition-all hover:scale-105 flex items-center justify-center gap-2"
+      >
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+        </svg>
+        Join Telegram Channel
+      </button>
+    </div>
+  </div>
+)}
     </div>
   )}
 
