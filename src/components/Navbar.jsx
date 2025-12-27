@@ -136,27 +136,43 @@ const [showSubInfo, setShowSubInfo] = useState(false);
             ))}
           </div>
 
-          {/* Desktop Auth Buttons (Restored) */}
-          <div className="hidden md:flex items-center gap-3 relative">
+         {/* Desktop Auth Buttons (Restored) */}
+<div className="hidden md:flex items-center gap-3 relative">
   {subscription?.active && (
-    <button
-      onClick={() => setShowSubInfo(!showSubInfo)}
-      className="px-3 py-1 rounded-full bg-red-600 text-white text-sm flex items-center gap-2"
-    >
-      <span className="w-2 h-2 rounded-full bg-green-400" />
-      Active
-    </button>
-  )}
+    <div className="relative">
+      <button
+        onClick={() => setShowSubInfo(!showSubInfo)}
+        className="px-4 py-2 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white text-sm font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-105"
+      >
+        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+        Active
+      </button>
 
-  {showSubInfo && subscription?.active && (
-    <div className="absolute right-0 top-12 w-56 rounded-lg bg-card border border-border p-4 shadow-lg z-50">
-      <p className="text-sm">
-        <b>Plan:</b> {subscription.plan}
-      </p>
-      <p className="text-sm mt-1">
-        <b>Started:</b>{" "}
-        {new Date(subscription.startDate).toLocaleDateString()}
-      </p>
+      {showSubInfo && (
+        <div className="absolute right-0 top-14 w-64 rounded-xl bg-card border border-border p-4 shadow-2xl z-50 animate-fade-in">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold text-primary">
+              {subscription.plan}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium">Started:</span>{" "}
+              {new Date(subscription.startDate).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium">Expires:</span>{" "}
+              {new Date(subscription.endDate).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   )}
 
