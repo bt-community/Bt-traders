@@ -4,12 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, TrendingUp, LogOut } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+const API_BASE = "https://bt-community-production.up.railway.app/api/v1";
+
+
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [subscription, setSubscription] = useState(null);
+const [showSubInfo, setShowSubInfo] = useState(false);
 
   const isLoggedIn = !!localStorage.getItem("token");
 
@@ -20,6 +26,7 @@ const Navbar = () => {
     { name: "Reviews", id: "reviews", path: "/#reviews" },
     { name: "Contact", id: "contact", path: "/#contact" },
   ];
+  
 
   // ScrollSpy Logic
   useEffect(() => {
@@ -44,7 +51,21 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [])
+  useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  fetch(`${API_BASE}/subscription/status`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.ok ? res.json() : null)
+    .then(setSubscription)
+    .catch(() => {});
+  }, []);;
+  
 
   const handleNavClick = (id, path) => {
     setIsOpen(false);
@@ -116,34 +137,50 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Auth Buttons (Restored) */}
-          <div className="hidden md:flex items-center gap-3">
-            {isLoggedIn ? (
-              <Button
-                variant="destructive"
-                size="default"
-                onClick={handleLogout}
-                className="gap-2"
-              >
-                <LogOut className="w-4 h-4" />
-                Sign Out
-              </Button>
-            ) : (
-              <>
-                <Link to="/auth">
-                  <Button
-                    variant="ghost"
-                    className="text-foreground/80 hover:text-primary"
-                  >
-                    Sign In
-                  </Button>
-                </Link>
-                <Link to="/auth?mode=signup">
-                  <Button variant="accent" size="default">
-                    Sign Up
-                  </Button>
-                </Link>
-              </>
-            )}
+          <div className="hidden md:flex items-center gap-3 relative">
+  {subscription?.active && (
+    <button
+      onClick={() => setShowSubInfo(!showSubInfo)}
+      className="px-3 py-1 rounded-full bg-red-600 text-white text-sm flex items-center gap-2"
+    >
+      <span className="w-2 h-2 rounded-full bg-green-400" />
+      Active
+    </button>
+  )}
+
+  {showSubInfo && subscription?.active && (
+    <div className="absolute right-0 top-12 w-56 rounded-lg bg-card border border-border p-4 shadow-lg z-50">
+      <p className="text-sm">
+        <b>Plan:</b> {subscription.plan}
+      </p>
+      <p className="text-sm mt-1">
+        <b>Started:</b>{" "}
+        {new Date(subscription.startDate).toLocaleDateString()}
+      </p>
+    </div>
+  )}
+
+  {isLoggedIn ? (
+    <Button
+      variant="destructive"
+      size="default"
+      onClick={handleLogout}
+      className="gap-2"
+    >
+      <LogOut className="w-4 h-4" />
+      Sign Out
+    </Button>
+  ) : (
+    <>
+      <Link to="/auth">
+        <Button variant="ghost">Sign In</Button>
+      </Link>
+      <Link to="/auth?mode=signup">
+        <Button variant="accent">Sign Up</Button>
+      </Link>
+    </>
+  )}
+</div>
           </div>
 
           {/* Mobile Menu Button */}
