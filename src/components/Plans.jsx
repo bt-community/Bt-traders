@@ -37,7 +37,7 @@ const plans = [
   },
   {
     name: "3 Months",
-    price: "4999",
+    price: "3999",
     displayPrice: "₹3,999",
     duration: "3 months",
     savings: "Save ₹998",
