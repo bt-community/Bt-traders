@@ -24,8 +24,8 @@ const loadRazorpayScript = () => {
 const plans = [
   {
     name: "1 Month",
-    price: "1699",
-    displayPrice: "₹1,699",
+    price: "1999",
+    displayPrice: "₹1,999",
     savings: "Save ₹0",
     duration: "month",
     features: [
@@ -37,8 +37,8 @@ const plans = [
   },
   {
     name: "3 Months",
-    price: "3999",
-    displayPrice: "₹3,999",
+    price: "4999",
+    displayPrice: "₹4,999",
     duration: "3 months",
     savings: "Save ₹998",
     features: [
@@ -50,8 +50,8 @@ const plans = [
   },
   {
     name: "6 Months",
-    price: "8499",
-    displayPrice: "₹8,499",
+    price: "9999",
+    displayPrice: "₹9,999",
     duration: "6 months",
     savings: "Save ₹1,995",
     features: [
@@ -64,8 +64,8 @@ const plans = [
   },
   {
     name: "12 Months",
-    price: "14999",
-    displayPrice: "₹14,999",
+    price: "17999",
+    displayPrice: "₹17,999",
     duration: "year",
     savings: "Save ₹5,989",
     features: [
